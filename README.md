@@ -1,8 +1,14 @@
+### Data
+
+The /data directory contains masks/folders. All_#_Subfoldered contains all the images from the shared drive-- each image has its own folder, I've already run a script to make a masks/images folder seperately. The masks need to be in grayscale, the images do not. When loading new images, make numpy arrays and check shape. the gims/gmasks folders are all the images converted to grayscale using a script. 
+
 ### Training
 
 ```shell script
 > python train.py -h
 usage: train.py [-h] [-e E] [-b [B]] [-l [LR]] [-f LOAD] [-s SCALE] [-v VAL]
+
+Example: python3 train.py --scale 1.0
 
 Train the UNet on images and target masks
 
@@ -58,3 +64,8 @@ optional arguments:
                         Scale factor for the input images (default: 0.5)
 ```
 You can specify which model file to use with `--model MODEL.pth`.
+
+
+### References
+
+https://github.com/milesial/Pytorch-UNet
