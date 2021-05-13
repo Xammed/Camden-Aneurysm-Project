@@ -25,7 +25,7 @@ def mask_to_image(mask):
 
 dir_img = 'data/imgs/'
 dir_mask = 'data/masks/'
-dir_checkpoint = '/home/khanmo67/Unet_Slapdash/Pytorch-Unet-master'
+dir_checkpoint = '/checkpoint'
 
 
 def train_net(net,
@@ -130,9 +130,11 @@ def train_net(net,
                 logging.info('Created checkpoint directory')
             except OSError:
                 pass
-            #torch.save(net.state_dict(),
-                      # dir_checkpoint + f'CP_epoch{epoch + 1}.pth')
-            torch.save(net.state_dict(), dir_checkpoint +"model.pth")
+            torch.save(net.state_dict(),
+                       dir_checkpoint + f'CP_epoch{epoch + 1}.pth')
+            
+            #In case of weird saving permissions
+            #torch.save(net.state_dict(), dir_checkpoint +"model.pth")
             logging.info(f'Checkpoint {epoch + 1} saved !')
 
     writer.close()
